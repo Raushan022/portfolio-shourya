@@ -1,4 +1,6 @@
 import "./App.css";
+import AboutMe from "./components/AboutMe";
+import Gallery from "./components/Gallery";
 import HeroSection from "./components/HeroSection";
 import Navbar from "./components/navbar";
 
@@ -7,6 +9,8 @@ function App() {
     <>
       <Navbar />
       <HeroSection />
+      <AboutMe />
+      <Gallery />
     </>
   );
 }
