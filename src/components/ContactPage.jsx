@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { FaInstagram, FaWhatsapp, FaEnvelope, FaHeart } from "react-icons/fa";
 
 const ContactPage = () => {
   const [formData, setFormData] = useState({ name: "", message: "" });
@@ -9,22 +8,30 @@ const ContactPage = () => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
+  const handleSubmit = async (event) => {
+    event.preventDefault();
 
-    console.log(formData.name);
-    console.log(formData.message);
+    const formData = new FormData(event.target);
 
-    // Ensure both fields are filled before submission
-    if (!formData.name || !formData.message) {
-      alert("Please fill out all fields! 😊");
-      return;
+    formData.append("access_key", "5bbb6110-0107-4d4c-8bd0-29e9aa4b0c09");
+
+    const object = Object.fromEntries(formData);
+    const json = JSON.stringify(object);
+
+    const res = await fetch("https://api.web3forms.com/submit", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+      },
+      body: json,
+    }).then((res) => res.json());
+
+    if (res.success) {
+      console.log("Success", res);
+      alert("Your message has been sent! 💖");
+      setFormData({ name: "", message: "" }); // Clear form fields
     }
-
-    alert("Your message has been sent! 💖");
-
-    // **Clear input fields after submission**
-    setFormData({ name: "", message: "" });
   };
 
   return (
