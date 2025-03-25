@@ -1,5 +1,6 @@
 import "./App.css";
 import AboutMe from "./components/AboutMe";
+import ContactPage from "./components/ContactPage";
 import Favourites from "./components/Favourites";
 import Gallery from "./components/Gallery";
 import HeroSection from "./components/HeroSection";
@@ -15,6 +16,7 @@ function App() {
       <Gallery />
       <Favourites />
       <Milestones />
+      <ContactPage />
     </>
   );
 }
