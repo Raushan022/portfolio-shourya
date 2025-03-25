@@ -38,7 +38,7 @@ const Favourites = () => {
           {favourites.map((fav, index) => (
             <div
               key={index}
-              className="bg-white shadow-lg rounded-xl p-6 flex items-center gap-4"
+              className="bg-white shadow-lg rounded-xl p-6 flex items-center gap-4 transition-transform duration-300 hover:scale-103"
             >
               {fav.icon}
               <div>
